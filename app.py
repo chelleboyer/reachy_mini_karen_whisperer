@@ -124,13 +124,15 @@ with gr.Blocks(title="The Karen Whisperer") as demo:
                     gr.Markdown("### 24/7\nAlways On")
         
         with gr.Column(scale=1):
-            gr.Image("https://raw.githubusercontent.com/chelleboyer/reachy_mini_karen_whisperer/main/images/1-reachy-mini-retail-assistant.PNG", 
-                    show_label=False, 
-                    container=False,
-                    height=400)
             gr.HTML("""
-            <div style="padding: 1rem; text-align: center;">
-            <p><a href="https://thekarenwhisperer.lovable.app/" target="_blank" rel="noopener noreferrer" style="color: #0066cc; text-decoration: underline; font-weight: 600; font-size: 1.05rem;">🎨 View Full Marketing Site →</a></p>
+            <div style="text-align: center;">
+                <img src="https://raw.githubusercontent.com/chelleboyer/reachy_mini_karen_whisperer/main/images/1-reachy-mini-retail-assistant.PNG" 
+                     alt="Reachy Mini Retail Assistant" 
+                     style="width: 100%; max-width: 500px; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <div style="padding: 1rem;">
+                    <a href="https://thekarenwhisperer.lovable.app/" target="_blank" rel="noopener noreferrer" 
+                       style="color: #0066cc; text-decoration: underline; font-weight: 600; font-size: 1.05rem;">🎨 View Full Marketing Site →</a>
+                </div>
             </div>
             """)
     
