@@ -7,57 +7,47 @@ import gradio as gr
 # Custom CSS matching the marketing site
 custom_css = """
 .gradio-container {
-    background-image: 
-        linear-gradient(rgba(200, 200, 220, 0.15) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200, 200, 220, 0.15) 1px, transparent 1px) !important;
-    background-size: 40px 40px !important;
-    background-color: #fafafa !important;
-}
-.app {
-    background: transparent !important;
+    background-color: #f8f9fa;
 }
 .hero-section {
-    padding: 3rem 2rem;
+    padding: 2rem 1.5rem;
     margin-bottom: 2rem;
 }
 .hero-content {
     text-align: left;
-    padding-right: 2rem;
+    padding-right: 1.5rem;
 }
 .hero-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
     color: #1a1a1a;
 }
 .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-bottom: 1rem;
     color: #4a4a4a;
 }
 .hero-description {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #666;
     line-height: 1.6;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 .stats-row {
     display: flex;
-    gap: 2rem;
-    margin-top: 2rem;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
 }
 .stat-box {
     background: white;
-    padding: 1.5rem;
+    padding: 1.25rem;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     border: 1px solid #e0e0e0;
-}
-.hero-image {
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    max-width: 100%;
-    height: auto;
+    flex: 1;
+    min-width: 150px;
 }
 .feature-card {
     padding: 1.5rem;
@@ -72,7 +62,7 @@ custom_css = """
     border-radius: 8px;
     margin-bottom: 1rem;
     border-left: 4px solid #667eea;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 """
 
