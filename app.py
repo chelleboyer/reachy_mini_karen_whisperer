@@ -7,7 +7,7 @@ import gradio as gr
 # Custom CSS matching the marketing site
 custom_css = """
 .gradio-container {
-    background-color: #f8f9fa;
+    background-color: #f8f9fa !important;
 }
 /* Force all text to be black/dark - override Gradio defaults */
 .gradio-container * {
@@ -26,9 +26,24 @@ custom_css = """
 .gradio-container a {
     color: #0066cc !important;
 }
+/* Force white backgrounds on all cards and groups */
+.gradio-container .gr-group,
+.gradio-container .gr-box,
+.stat-box,
+.feature-card,
+.step-card {
+    background-color: white !important;
+    background: white !important;
+}
+/* Make sure Row and Column don't have dark backgrounds */
+.gradio-container .gr-row,
+.gradio-container .gr-column {
+    background-color: transparent !important;
+}
 .hero-section {
     padding: 2rem 1.5rem;
     margin-bottom: 2rem;
+    background-color: transparent !important;
 }
 .hero-content {
     text-align: left;
@@ -56,28 +71,34 @@ custom_css = """
     gap: 1rem;
     margin-top: 1.5rem;
     flex-wrap: wrap;
+    background-color: transparent !important;
 }
 .stat-box {
-    background: white;
+    background: white !important;
+    background-color: white !important;
     padding: 1.25rem;
     border-radius: 8px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    border: 1px solid #e0e0e0;
+    border: 1px solid #333333;
     flex: 1;
     min-width: 150px;
 }
 .feature-card {
     padding: 1.5rem;
-    border: 1px solid #e0e0e0;
+    border: 2px solid #333333;
     border-radius: 8px;
     margin-bottom: 1rem;
-    background: white;
+    background: white !important;
+    background-color: white !important;
 }
 .step-card {
-    background: white;
+    background: white !important;
+    background-color: white !important;
     padding: 1.5rem;
     border-radius: 8px;
     margin-bottom: 1rem;
+    border-left: 4px solid #667eea;
+    border: 2px solid #333333;
     border-left: 4px solid #667eea;
     box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
