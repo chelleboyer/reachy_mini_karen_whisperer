@@ -6,48 +6,72 @@ import gradio as gr
 
 # Custom CSS matching the marketing site
 custom_css = """
+body {
+    background-image: 
+        linear-gradient(rgba(200, 200, 220, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200, 200, 220, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+.gradio-container {
+    background: transparent !important;
+}
 .hero-section {
-    text-align: center;
-    padding: 3rem 1rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-radius: 10px;
+    padding: 3rem 2rem;
     margin-bottom: 2rem;
+}
+.hero-content {
+    text-align: left;
+    padding-right: 2rem;
 }
 .hero-title {
     font-size: 3rem;
     font-weight: bold;
     margin-bottom: 1rem;
+    color: #1a1a1a;
 }
 .hero-subtitle {
     font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #4a4a4a;
+}
+.hero-description {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
     margin-bottom: 2rem;
-    opacity: 0.95;
 }
 .stats-row {
     display: flex;
-    justify-content: center;
     gap: 2rem;
     margin-top: 2rem;
 }
 .stat-box {
-    background: rgba(255,255,255,0.1);
-    padding: 1rem 2rem;
+    background: white;
+    padding: 1.5rem;
     border-radius: 8px;
-    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid #e0e0e0;
+}
+.hero-image {
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    max-width: 100%;
+    height: auto;
 }
 .feature-card {
     padding: 1.5rem;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     margin-bottom: 1rem;
+    background: white;
 }
 .step-card {
-    background: #f8f9fa;
+    background: white;
     padding: 1.5rem;
     border-radius: 8px;
     margin-bottom: 1rem;
     border-left: 4px solid #667eea;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 """
 
@@ -55,23 +79,24 @@ custom_css = """
 with gr.Blocks(theme=gr.themes.Soft(), css=custom_css, title="The Karen Whisperer") as demo:
     
     # Hero Section
-    with gr.Column(elem_classes="hero-section"):
-        gr.Markdown("# Meet Reachy Mini\n## Retail Assistant", elem_classes="hero-title")
-        gr.Markdown("### Your tiny, charming Retail Assistant - aka the Karen Whisperer", elem_classes="hero-subtitle")
-        gr.Markdown("**Small robot. Big patience.** De-escalation with built-in chill mode - he handles the \"Can I speak to your manager?\" so you don't have to.")
+    with gr.Row(elem_classes="hero-section"):
+        with gr.Column(scale=1, elem_classes="hero-content"):
+            gr.Markdown("# Meet Reachy Mini\n## Retail Assistant", elem_classes="hero-title")
+            gr.Markdown("### Your tiny, charming Retail Assistant - aka the Karen Whisperer", elem_classes="hero-subtitle")
+            gr.Markdown("**Small robot. Big patience.** De-escalation with built-in chill mode - he handles the \"Can I speak to your manager?\" so you don't have to.", elem_classes="hero-description")
+            
+            # Stats
+            with gr.Row(elem_classes="stats-row"):
+                with gr.Column(scale=1, elem_classes="stat-box"):
+                    gr.Markdown("### 99%\nDe-escalation Rate")
+                with gr.Column(scale=1, elem_classes="stat-box"):
+                    gr.Markdown("### <2s\nResponse Time")
+                with gr.Column(scale=1, elem_classes="stat-box"):
+                    gr.Markdown("### 24/7\nAlways On")
         
-        with gr.Row():
-            gr.Button("Try Reachy Mini", link="https://huggingface.co/spaces/chelleboyer/reachy_mini_retail_assistant", variant="primary", size="lg")
-            gr.Button("Vote on Hugging Face", link="https://huggingface.co/spaces/chelleboyer/reachy_mini_karen_whisperer", variant="secondary", size="lg")
-        
-        # Stats
-        with gr.Row():
-            with gr.Column(scale=1, elem_classes="stat-box"):
-                gr.Markdown("### 99%\nDe-escalation Rate")
-            with gr.Column(scale=1, elem_classes="stat-box"):
-                gr.Markdown("### <2s\nResponse Time")
-            with gr.Column(scale=1, elem_classes="stat-box"):
-                gr.Markdown("### 24/7\nAlways On")
+        with gr.Column(scale=1):
+            gr.Image("https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=600&fit=crop", 
+                    elem_classes="hero-image", show_label=False, show_download_button=False)
     
     # What Reachy Can Do
     gr.Markdown("## What Reachy Mini Can Do")
