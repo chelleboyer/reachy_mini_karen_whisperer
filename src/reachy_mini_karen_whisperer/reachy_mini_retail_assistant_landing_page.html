@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reachy Mini Retail Assistant — The Karen Whisperer</title>
+  <meta name="description" content="Reachy Mini Retail Assistant — The Karen Whisperer. Inventory checks, instant escalation, happier customers." />
+
+  <!--
+    ✅ How to use
+    1) Put this file next to an /images folder.
+    2) Copy your 7 images into /images with the exact filenames below.
+    3) Open this file in your browser.
+
+    /images/
+      1-reachy-mini-retail-assistant.PNG
+      2-customer-asks-for-snackers.jpg
+      3-reachy-mini-snackers-out-of-stock.png
+      4-customer-unhappy.jpg
+      5-reachy-mini-calls-manager.png
+      6-manager-saves-the-day.PNG
+      7-final-shot-happy-customer.jpg
+  -->
+
+  <style>
+    :root {
+      --bg0: #070A12;
+      --bg1: #0B1020;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.10);
+      --stroke: rgba(255,255,255,.16);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muted2: rgba(255,255,255,.55);
+      --accent: #7C3AED;      /* purple */
+      --accent2: #06B6D4;     /* cyan */
+      --warn: #F59E0B;
+      --danger: #EF4444;
+      --ok: #22C55E;
+      --shadow: 0 20px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 650px at 15% -10%, rgba(124,58,237,.34), transparent 55%),
+        radial-gradient(900px 560px at 85% 0%, rgba(6,182,212,.26), transparent 50%),
+        radial-gradient(900px 560px at 70% 110%, rgba(245,158,11,.12), transparent 52%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 22px 18px 80px; }
+
+    /* Top nav */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 16px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.35);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 14px;
+      z-index: 40;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 220px;
+    }
+    .logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.75), rgba(255,255,255,.08) 38%, transparent 55%),
+        linear-gradient(135deg, rgba(124,58,237,.95), rgba(6,182,212,.95));
+      box-shadow: 0 10px 30px rgba(124,58,237,.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .logo:after {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background: radial-gradient(circle at 40% 40%, rgba(255,255,255,.45), transparent 55%);
+      transform: rotate(25deg);
+    }
+    .brand .name {
+      font-weight: 780;
+      letter-spacing: .2px;
+      line-height: 1.05;
+      font-size: 14px;
+    }
+    .brand .tag {
+      font-size: 12px;
+      color: var(--muted2);
+      margin-top: 2px;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+    }
+    .navlinks a {
+      padding: 10px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 650;
+      font-size: 13px;
+      border: 1px solid transparent;
+      transition: .2s ease;
+      white-space: nowrap;
+    }
+    .navlinks a:hover {
+      color: var(--text);
+      border-color: rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+    }
+
+    .navcta {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      min-width: 220px;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-weight: 750;
+      font-size: 13px;
+      transition: transform .15s ease, background .2s ease, border-color .2s ease;
+      user-select: none;
+    }
+    .btn:hover { transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.22); }
+    .btn:active { transform: translateY(0px); }
+
+    .btn-primary {
+      border-color: rgba(124,58,237,.5);
+      background: linear-gradient(135deg, rgba(124,58,237,.95), rgba(6,182,212,.85));
+      box-shadow: 0 16px 40px rgba(124,58,237,.22);
+    }
+    .btn-primary:hover { border-color: rgba(6,182,212,.65); }
+
+    /* Hero */
+    .hero {
+      padding: 42px 0 18px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 26px;
+      align-items: start;
+      margin-top: 18px;
+    }
+
+    .pill {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-weight: 650;
+      font-size: 12.5px;
+      width: fit-content;
+    }
+    .pill b {
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 14px 0 10px;
+      font-size: clamp(34px, 3.6vw, 54px);
+      line-height: 1.02;
+      letter-spacing: -0.8px;
+    }
+    .gradient {
+      background: linear-gradient(90deg, rgba(124,58,237,1), rgba(6,182,212,1), rgba(245,158,11,.85));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 16.5px;
+      line-height: 1.55;
+      max-width: 54ch;
+      margin: 0 0 18px;
+    }
+
+    .heroActions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+    .statRow {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .stat {
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      padding: 14px 14px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.24);
+      backdrop-filter: blur(10px);
+    }
+    .stat .big { font-size: 18px; font-weight: 900; letter-spacing: -.2px; }
+    .stat .small { color: var(--muted2); font-weight: 650; font-size: 12px; margin-top: 3px; }
+
+    /* Carousel card */
+    .card {
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .heroImageWrap {
+      position: relative;
+      background: linear-gradient(135deg, rgba(10,12,24,.98), rgba(8,10,18,.98));
+      display: grid;
+      place-items: center;
+      padding: 18px;
+    }
+    .heroImageWrap img {
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 16px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.55);
+      border: 1px solid rgba(255,255,255,.18);
+    }
+
+    /* Sections */
+    .section {
+      margin-top: 30px;
+      padding-top: 18px;
+    }
+    .grid3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .feature {
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius2);
+      padding: 16px 16px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.22);
+      position: relative;
+      overflow: hidden;
+    }
+    .feature:before {
+      content: "";
+      position: absolute;
+      inset: -70px;
+      background: radial-gradient(circle at 25% 25%, rgba(124,58,237,.22), transparent 55%),
+                  radial-gradient(circle at 75% 35%, rgba(6,182,212,.18), transparent 60%);
+      transform: rotate(-12deg);
+      pointer-events: none;
+    }
+    .feature > * { position: relative; }
+    .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.14);
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    .feature h3 { margin: 6px 0 6px; font-size: 16px; letter-spacing: -.2px; }
+    .feature p { margin: 0; color: var(--muted); line-height: 1.55; font-size: 13.5px; }
+
+    .twoCol {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .list {
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius2);
+      padding: 16px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.22);
+    }
+    .list h3 { margin: 0 0 10px; font-size: 15px; }
+    .bullet {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 10px 0;
+      border-top: 1px solid rgba(255,255,255,.10);
+    }
+    .bullet:first-of-type { border-top: none; padding-top: 0; }
+    .check {
+      width: 22px;
+      height: 22px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: rgba(34,197,94,.15);
+      border: 1px solid rgba(34,197,94,.35);
+      margin-top: 2px;
+      flex: 0 0 auto;
+    }
+    .bullet b { display: block; font-size: 13.5px; }
+    .bullet span { display: block; color: var(--muted2); font-size: 12.5px; line-height: 1.4; margin-top: 2px; }
+
+    /* Footer */
+    .footer {
+      margin-top: 34px;
+      padding: 18px 0 0;
+      color: var(--muted2);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 940px) {
+      .hero { grid-template-columns: 1fr; }
+      .navlinks { display: none; }
+      .statRow { grid-template-columns: 1fr; }
+      .grid3 { grid-template-columns: 1fr; }
+      .twoCol { grid-template-columns: 1fr; }
+      .brand { min-width: unset; }
+      .navcta { min-width: unset; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .slides { transition: none; }
+      .btn, .carBtn { transition: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="nav" aria-label="Top navigation">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div class="name">Reachy Mini Retail Assistant</div>
+          <div class="tag">a.k.a. <b>The Karen Whisperer</b></div>
+        </div>
+      </div>
+
+      <nav class="navlinks" aria-label="Page sections">
+        <a href="#story">Story</a>
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#demo">Demo</a>
+      </nav>
+
+      <div class="navcta">
+        <a class="btn" href="#demo" title="Jump to demo">See the demo</a>
+        <a class="btn btn-primary" href="https://thekarenwhisperer.lovable.app" target="_blank" rel="noreferrer">View Full App</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="story">
+        <div>
+          <div class="pill">⚡ <b>Instant</b> inventory checks • 🧠 polite escalation • 😌 fewer eyebrow wrinkles</div>
+          <h1>
+            Turn <span class="gradient">“I want the manager”</span>
+            into <span class="gradient">“Oh wow, thanks!”</span>
+          </h1>
+          <p class="subtitle">
+            Reachy Mini is your in-store sidekick that spots out-of-stocks, checks inventory, and escalates to a human
+            manager only when needed. Think: customer service with a built-in thermostat for drama.
+          </p>
+
+          <div class="heroActions">
+            <a class="btn btn-primary" href="#demo">Watch the story carousel ▶</a>
+            <a class="btn" href="#how">How it works</a>
+          </div>
+
+          <div class="statRow" aria-label="Quick stats">
+            <div class="stat">
+              <div class="big">Inventory → Answer</div>
+              <div class="small">Ask, scan, confirm. No treasure hunts.</div>
+            </div>
+            <div class="stat">
+              <div class="big">Escalation, not chaos</div>
+              <div class="small">Only calls a manager when it’s actually spicy.</div>
+            </div>
+            <div class="stat">
+              <div class="big">Happier checkout lane</div>
+              <div class="small">Less friction. More snacks.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" id="demo">
+          <a class="heroImageWrap" href="https://thekarenwhisperer.lovable.app" target="_blank" rel="noreferrer" aria-label="Open the full Karen Whisperer marketing app">
+            <img src="images/1-reachy-mini-retail-assistant.PNG" alt="Reachy Mini Retail Assistant landing screen" loading="eager" />
+          </a>
+        </div>
+      </section>
+
+      <section class="section" id="features">
+        <div class="pill">🧩 Built for convenience stores • 🚚 truckstops • 🛒 high-traffic retail</div>
+        <h2 style="margin: 14px 0 6px; font-size: 26px; letter-spacing: -.4px;">Why it’s oddly effective</h2>
+        <p style="margin:0; color: var(--muted); line-height: 1.55; max-width: 70ch;">
+          The Karen Whisperer playbook: answer fast, show evidence, escalate only when necessary, and keep humans doing what humans do best: fixing the weird stuff.
+        </p>
+
+        <div class="grid3">
+          <div class="feature">
+            <div class="icon">🔎</div>
+            <h3>Instant inventory answers</h3>
+            <p>Turns “Do you have this?” into a quick, confident response—no aisle safari required.</p>
+          </div>
+          <div class="feature">
+            <div class="icon">🧠</div>
+            <h3>De-escalation by design</h3>
+            <p>Neutral tone, clear status, next step. The customer feels heard. The staff keeps breathing.</p>
+          </div>
+          <div class="feature">
+            <div class="icon">📣</div>
+            <h3>Escalates with context</h3>
+            <p>When it calls a manager, it includes the “what/why/now” so nobody plays 20 Questions.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="how">
+        <h2 style="margin: 14px 0 6px; font-size: 26px; letter-spacing: -.4px;">How it works</h2>
+        <p style="margin:0; color: var(--muted); line-height: 1.55; max-width: 70ch;">
+          A simple flow that looks magical in a demo (the best kind of magic).
+        </p>
+
+        <div class="twoCol">
+          <div class="list">
+            <h3>Customer-facing</h3>
+            <div class="bullet">
+              <div class="check">✓</div>
+              <div>
+                <b>Ask for an item</b>
+                <span>“Snackers.” (A totally real product. Definitely.)</span>
+              </div>
+            </div>
+            <div class="bullet">
+              <div class="check">✓</div>
+              <div>
+                <b>Show the result</b>
+                <span>Quantity, status, and next step—clearly displayed.</span>
+              </div>
+            </div>
+            <div class="bullet">
+              <div class="check">✓</div>
+              <div>
+                <b>Offer options</b>
+                <span>Alternative items, ETA, or “let me grab a human.”</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="list">
+            <h3>Staff-facing</h3>
+            <div class="bullet">
+              <div class="check">✓</div>
+              <div>
+                <b>Inventory check / scan</b>
+                <span>Pull from POS/ERP/warehouse feeds (your choice of chaos).</span>
+              </div>
+            </div>
+            <div class="bullet">
+              <div class="check">✓</div>
+              <div>
+                <b>Escalate with context</b>
+                <span>Item requested, shelf status, last known stock, suggested action.</span>
+              </div>
+            </div>
+            <div class="bullet">
+              <div class="check">✓</div>
+              <div>
+                <b>Close the loop</b>
+                <span>Mark resolved, log outcome, improve future responses.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="cta">
+        <div class="card" style="padding: 18px; display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:space-between;">
+          <div>
+            <div class="pill">✨ Your demo hook, in one line</div>
+            <div style="font-weight: 900; font-size: 18px; margin-top: 10px; letter-spacing:-.2px;">
+              “Reachy Mini turns stock questions into answers — and escalates the drama to a manager only when it’s earned.”
+            </div>
+            <div style="color: var(--muted2); font-weight: 650; margin-top: 6px;">
+              Perfect for LinkedIn & YouTube Shorts captions.
+            </div>
+          </div>
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+            <a class="btn" href="https://thekarenwhisperer.lovable.app" target="_blank" rel="noreferrer">Open marketing app</a>
+            <a class="btn btn-primary" href="https://thekarenwhisperer.lovable.app" target="_blank" rel="noreferrer">Launch the app 🚀</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer">
+        <div>© <span id="year"></span> Reachy Mini Retail Assistant • The Karen Whisperer</div>
+        <div style="display:flex; gap:12px; align-items:center;">
+          <a class="btn" href="https://thekarenwhisperer.lovable.app" target="_blank" rel="noreferrer">Marketing app</a>
+          <a class="btn" href="#" title="Put your Hugging Face Space link here">Hugging Face</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const yearEl = document.getElementById('year');
+      yearEl.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
