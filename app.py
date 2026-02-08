@@ -96,8 +96,13 @@ with gr.Blocks(title="The Karen Whisperer") as demo:
                     gr.Markdown("### 24/7\nAlways On")
         
         with gr.Column(scale=1):
-            gr.Image("https://raw.githubusercontent.com/chelleboyer/reachy_mini_karen_whisperer/main/images/1-reachy-mini-retail-assistant.PNG", 
-                    elem_classes="hero-image", show_label=False)
+            gr.Markdown("""
+            ### See It In Action
+            
+            [🎨 Interactive Demo & Marketing Site](https://thekarenwhisperer.lovable.app/)
+            
+            Experience the full Karen Whisperer concept with interactive storytelling and visual demonstrations.
+            """)
     
     # What Reachy Can Do
     gr.Markdown("## What Reachy Mini Can Do")
