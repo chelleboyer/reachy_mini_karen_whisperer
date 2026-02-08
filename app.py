@@ -76,7 +76,7 @@ body {
 """
 
 # Build the Gradio interface
-with gr.Blocks(theme=gr.themes.Soft(), css=custom_css, title="The Karen Whisperer") as demo:
+with gr.Blocks(title="The Karen Whisperer") as demo:
     
     # Hero Section
     with gr.Row(elem_classes="hero-section"):
@@ -96,7 +96,7 @@ with gr.Blocks(theme=gr.themes.Soft(), css=custom_css, title="The Karen Whispere
         
         with gr.Column(scale=1):
             gr.Image("https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=600&fit=crop", 
-                    elem_classes="hero-image", show_label=False, show_download_button=False)
+                    elem_classes="hero-image", show_label=False)
     
     # What Reachy Can Do
     gr.Markdown("## What Reachy Mini Can Do")
@@ -211,4 +211,4 @@ return sendResponse(response.message); // ✨""", language="typescript")
     """)
 
 if __name__ == "__main__":
-    demo.launch()
+    demo.launch(theme=gr.themes.Soft(), css=custom_css)
