@@ -13,7 +13,11 @@ custom_css = """
 }
 
 .gradio-container {
-    background: linear-gradient(135deg, #0d9488 0%, #06b6d4 100%) !important;
+    background: linear-gradient(135deg, #ccfbf1 0%, #99f6e4 50%, #5eead4 100%) !important;
+    background-image: 
+        linear-gradient(135deg, #ccfbf1 0%, #99f6e4 50%, #5eead4 100%),
+        repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(20, 184, 166, 0.03) 50px, rgba(20, 184, 166, 0.03) 100px),
+        repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(20, 184, 166, 0.03) 50px, rgba(20, 184, 166, 0.03) 100px) !important;
     min-height: 100vh;
     padding: 2rem 1rem !important;
 }
@@ -21,10 +25,11 @@ custom_css = """
 .main-content {
     max-width: 1200px;
     margin: 0 auto;
-    background: white;
+    background: rgba(255, 255, 255, 0.98);
     border-radius: 20px;
     padding: 3rem 2.5rem;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    box-shadow: 0 20px 60px rgba(13, 148, 136, 0.2);
+    backdrop-filter: blur(10px);
 }
 
 /* Typography */
@@ -234,25 +239,30 @@ custom_css = """
 
 /* Code Blocks - Fixed for Windows/iOS visibility */
 .gradio-container pre {
-    background: #1e293b !important;
+    background: #f8fafc !important;
     border-radius: 8px !important;
     padding: 1.5rem !important;
     margin: 1rem 0 !important;
-    border: 1px solid #334155 !important;
+    border: 2px solid #e0f2fe !important;
     overflow-x: auto !important;
 }
 
 .gradio-container pre code {
-    color: #e2e8f0 !important;
+    color: #0f172a !important;
     background: transparent !important;
     font-family: 'Monaco', 'Courier New', monospace !important;
     font-size: 0.9rem !important;
     line-height: 1.6 !important;
+    display: block !important;
+}
+
+.gradio-container pre code span {
+    color: #0f172a !important;
 }
 
 .gradio-container code {
-    background: #f1f5f9 !important;
-    color: #0f172a !important;
+    background: #ecfdf5 !important;
+    color: #0d9488 !important;
     padding: 0.2rem 0.4rem !important;
     border-radius: 4px !important;
     font-family: 'Monaco', 'Courier New', monospace !important;
