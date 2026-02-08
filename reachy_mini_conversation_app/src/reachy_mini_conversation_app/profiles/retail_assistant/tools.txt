@@ -1,0 +1,15 @@
+# Tools to load for retail_assistant profile
+# Format: one tool name per line (module file name without .py)
+
+# Core conversation tools (from reachy_mini_conversation_app)
+camera
+dance
+move_head
+play_emotion
+stop_dance
+stop_emotion
+
+# Custom retail assistant tools (profile-local)
+slack_escalation
+signal_tracker
+signal_aggregates
