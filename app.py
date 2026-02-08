@@ -13,11 +13,11 @@ custom_css = """
 }
 
 .gradio-container {
-    background: linear-gradient(135deg, #ccfbf1 0%, #99f6e4 50%, #5eead4 100%) !important;
+    background: linear-gradient(135deg, #f0fdfa 0%, #e6fffa 50%, #d1fae5 100%) !important;
     background-image: 
-        linear-gradient(135deg, #ccfbf1 0%, #99f6e4 50%, #5eead4 100%),
-        repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(20, 184, 166, 0.03) 50px, rgba(20, 184, 166, 0.03) 100px),
-        repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(20, 184, 166, 0.03) 50px, rgba(20, 184, 166, 0.03) 100px) !important;
+        linear-gradient(135deg, #f0fdfa 0%, #e6fffa 50%, #d1fae5 100%),
+        repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(14, 165, 233, 0.08) 19px, rgba(14, 165, 233, 0.08) 20px),
+        repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(14, 165, 233, 0.08) 19px, rgba(14, 165, 233, 0.08) 20px) !important;
     min-height: 100vh;
     padding: 2rem 1rem !important;
 }
