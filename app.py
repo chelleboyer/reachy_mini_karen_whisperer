@@ -343,7 +343,7 @@ with gr.Blocks(title="The Karen Whisperer - Reachy Mini Retail Assistant") as de
             # Hero Image as HTML
             gr.HTML("""
             <div style="text-align: center; margin: 2rem 0;">
-                <img src="https://huggingface.co/spaces/chelleboyer/reachy_mini_karen_whisperer/resolve/main/images/1-reachy-mini-retail-assistant.PNG" 
+                <img src="https://i.imgur.com/reachy-mini-retail.png" 
                      alt="Reachy Mini in Retail Store" 
                      style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
             </div>
