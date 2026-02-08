@@ -326,7 +326,7 @@ custom_css = """
 """
 
 # Build the Gradio interface
-with gr.Blocks(title="The Karen Whisperer - Reachy Mini Retail Assistant", css=custom_css) as demo:
+with gr.Blocks(title="The Karen Whisperer - Reachy Mini Retail Assistant") as demo:
     
     with gr.Column(elem_classes="main-content"):
         # Hero Banner
@@ -340,14 +340,14 @@ with gr.Blocks(title="The Karen Whisperer - Reachy Mini Retail Assistant", css=c
                 elem_classes="hero-description"
             )
             
-            # Hero Image
-            gr.Image(
-                "https://raw.githubusercontent.com/chelleboyer/reachy_mini_karen_whisperer/main/src/reachy_mini_karen_whisperer/images/1-reachy-mini-retail-assistant.PNG",
-                show_label=False,
-                container=False,
-                elem_classes="hero-image",
-                height=400
-            )
+            # Hero Image as HTML
+            gr.HTML("""
+            <div style="text-align: center; margin: 2rem 0;">
+                <img src="https://huggingface.co/spaces/chelleboyer/reachy_mini_karen_whisperer/resolve/main/images/1-reachy-mini-retail-assistant.PNG" 
+                     alt="Reachy Mini in Retail Store" 
+                     style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+            </div>
+            """)
             
             # CTA Buttons
             gr.HTML("""
@@ -505,4 +505,4 @@ return sendResponse(response.message); // ✨""", language="typescript")
         """)
 
 if __name__ == "__main__":
-    demo.launch()
+    demo.launch(css=custom_css)
