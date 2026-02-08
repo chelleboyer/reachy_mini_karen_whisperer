@@ -62,7 +62,7 @@ custom_css = """
 
 /* Hero Section */
 .hero-banner {
-    background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+    background: linear-gradient(135deg, #ccfbf1 0%, #99f6e4 100%);
     border-radius: 16px;
     padding: 3rem 2rem;
     margin-bottom: 3rem;
@@ -71,15 +71,16 @@ custom_css = """
 }
 
 .hero-banner * {
-    color: white !important;
+    color: #0f172a !important;
 }
 
 .hero-title {
     font-size: 3rem !important;
     font-weight: 800 !important;
     margin-bottom: 1rem !important;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    text-shadow: none !important;
     line-height: 1.2 !important;
+    color: #0f172a !important;
 }
 
 .hero-subtitle {
@@ -206,7 +207,7 @@ custom_css = """
 
 /* CTA Buttons */
 .cta-box {
-    background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%) !important;
+    background: linear-gradient(135deg, #99f6e4 0%, #5eead4 100%) !important;
     padding: 2rem !important;
     border-radius: 12px !important;
     text-align: center !important;
@@ -214,7 +215,7 @@ custom_css = """
 }
 
 .cta-box * {
-    color: white !important;
+    color: #0f172a !important;
 }
 
 .cta-button {
@@ -337,6 +338,15 @@ with gr.Blocks(title="The Karen Whisperer - Reachy Mini Retail Assistant", css=c
                 "so you don't have to. With AI-powered de-escalation, pattern detection, and emotional intelligence, "
                 "this pint-sized assistant is revolutionizing retail customer service.",
                 elem_classes="hero-description"
+            )
+            
+            # Hero Image
+            gr.Image(
+                "https://raw.githubusercontent.com/chelleboyer/reachy_mini_karen_whisperer/main/src/reachy_mini_karen_whisperer/images/1-reachy-mini-retail-assistant.PNG",
+                show_label=False,
+                container=False,
+                elem_classes="hero-image",
+                height=400
             )
             
             # CTA Buttons
