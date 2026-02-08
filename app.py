@@ -8,10 +8,10 @@ import gradio as gr
 custom_css = """
 .gradio-container {
     background-image: 
-        linear-gradient(rgba(150, 150, 180, 0.25) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(150, 150, 180, 0.25) 1px, transparent 1px) !important;
+        linear-gradient(rgba(200, 200, 220, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200, 200, 220, 0.15) 1px, transparent 1px) !important;
     background-size: 40px 40px !important;
-    background-color: #f5f5f5 !important;
+    background-color: #fafafa !important;
 }
 .app {
     background: transparent !important;
