@@ -1,249 +1,248 @@
 """
 The Karen Whisperer - Reachy Mini Retail Assistant
-HF Spaces landing page styled to match https://thekarenwhisperer.lovable.app/
+Landing Page for HF Spaces (matching marketing site design)
 """
 import gradio as gr
 
+# Custom CSS matching the marketing site
 custom_css = """
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap');
-
-:root {
-    --bg: #f7f8fb;
-    --grid: rgba(0, 0, 0, 0.04);
-    --text: #0b0b0d;
-    --muted: #4b4b52;
-    --accent: #0bb4c6;
-}
-
-body {
-    font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-}
-
 .gradio-container {
-    font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
-    background-color: var(--bg) !important;
-    background-image:
-        linear-gradient(var(--grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid) 1px, transparent 1px) !important;
-    background-size: 60px 60px !important;
-    color: var(--text) !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    padding: 48px 32px !important;
+    background-color: #f8f9fa !important;
 }
-
-.badge-row {
-    margin-bottom: 18px;
+/* Force all text to be black/dark - override Gradio defaults */
+.gradio-container * {
+    color: #000000 !important;
 }
-
-.hf-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: white;
-    border-radius: 999px;
-    padding: 10px 14px;
-    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.08);
-    font-weight: 700;
-    color: var(--muted);
-    border: 1px solid rgba(0, 0, 0, 0.06);
+.gradio-container h1, .gradio-container h2, .gradio-container h3, 
+.gradio-container h4, .gradio-container h5, .gradio-container h6 {
+    color: #000000 !important;
 }
-
-.hero {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 32px;
-    align-items: center;
+.gradio-container p, .gradio-container span, .gradio-container div {
+    color: #000000 !important;
 }
-
-.headline h1 {
-    font-size: 3rem;
-    line-height: 1.05;
-    margin: 0 0 14px 0;
-    font-weight: 800;
-    letter-spacing: -0.02em;
+.gradio-container .markdown {
+    color: #000000 !important;
 }
-
-.headline .accent {
-    color: var(--accent);
+.gradio-container a {
+    color: #0066cc !important;
 }
-
-.headline h2 {
-    font-size: 1.5rem;
-    margin: 0 0 12px 0;
-    font-weight: 600;
-    color: var(--text);
+/* Force white backgrounds on all cards and groups */
+.gradio-container .gr-group,
+.gradio-container .gr-box,
+.stat-box,
+.feature-card,
+.step-card {
+    background-color: white !important;
+    background: white !important;
 }
-
-.headline p {
-    margin: 0 0 18px 0;
-    font-size: 1.05rem;
-    color: var(--muted);
-    line-height: 1.55;
+/* Make sure Row and Column don't have dark backgrounds */
+.gradio-container .gr-row,
+.gradio-container .gr-column {
+    background-color: transparent !important;
 }
-
-.hero-actions {
-    display: flex;
-    gap: 14px;
-    margin: 18px 0 28px 0;
+.hero-section {
+    padding: 2rem 1.5rem;
+    margin-bottom: 2rem;
+    background-color: transparent !important;
 }
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 20px;
-    border-radius: 14px;
-    font-weight: 700;
+.hero-content {
+    text-align: left;
+    padding-right: 1.5rem;
+}
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #000000 !important;
+}
+.hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #000000 !important;
+}
+.hero-description {
     font-size: 1rem;
-    text-decoration: none;
-    transition: transform 0.15s ease, box-shadow 0.2s ease;
-    border: none;
+    color: #000000 !important;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
 }
-
-.btn.primary {
-    background: linear-gradient(135deg, #089db3, #0bc2cf);
-    color: white;
-    box-shadow: 0 10px 30px rgba(11, 180, 198, 0.25);
-}
-
-.btn.ghost {
-    background: white;
-    color: var(--text);
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.btn:hover {
-    transform: translateY(-1px);
-}
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(120px, 1fr));
-    gap: 18px;
-    margin-top: 10px;
-}
-
-.stat-card {
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 14px;
-    padding: 18px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
-    display: grid;
-    gap: 6px;
-}
-
-.stat-card .value {
-    font-size: 1.35rem;
-    font-weight: 800;
-    color: var(--text);
-}
-
-.stat-card .label {
-    color: var(--muted);
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-
-.device-frame {
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
-    padding: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.device-inner {
-    position: relative;
-    overflow: hidden;
-    border-radius: 16px;
-    background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.05));
-}
-
-.device-inner img {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-.slider-dots {
+.stats-row {
     display: flex;
-    justify-content: center;
-    gap: 6px;
-    padding: 12px 0 4px 0;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    background-color: transparent !important;
 }
-
-.slider-dots span {
-    width: 8px;
-    height: 8px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 999px;
+.stat-box {
+    background: white !important;
+    background-color: white !important;
+    padding: 1.25rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    border: 1px solid #333333;
+    flex: 1;
+    min-width: 150px;
 }
-
-.slider-dots span.active {
-    background: var(--text);
-    width: 18px;
+.feature-card {
+    padding: 1.5rem;
+    border: 2px solid #333333;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    background: white !important;
+    background-color: white !important;
 }
-
-@media (max-width: 980px) {
-    .hero {
-        grid-template-columns: 1fr;
-    }
-    .headline h1 {
-        font-size: 2.4rem;
-    }
-    .content {
-        padding: 32px 20px 40px;
-    }
+.step-card {
+    background: white !important;
+    background-color: white !important;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #667eea;
+    border: 2px solid #333333;
+    border-left: 4px solid #667eea;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 """
 
-
-with gr.Blocks(title="The Karen Whisperer", css=custom_css, theme=gr.themes.Soft()) as demo:
-    gr.HTML("""
-    <div class="badge-row">
-        <span class="hf-badge">Powered by Hugging Face</span>
-    </div>
+# Build the Gradio interface
+with gr.Blocks(title="The Karen Whisperer") as demo:
+    
+    # Hero Section
+    with gr.Row(elem_classes="hero-section"):
+        with gr.Column(scale=1, elem_classes="hero-content"):
+            gr.Markdown("# Meet Reachy Mini\n## Retail Assistant", elem_classes="hero-title")
+            gr.Markdown("### Your tiny, charming Retail Assistant - aka the Karen Whisperer", elem_classes="hero-subtitle")
+            gr.Markdown("**Small robot. Big patience.** De-escalation with built-in chill mode - he handles the \"Can I speak to your manager?\" so you don't have to.", elem_classes="hero-description")
+            
+            # Stats
+            with gr.Row(elem_classes="stats-row"):
+                with gr.Column(scale=1, elem_classes="stat-box"):
+                    gr.Markdown("### 99%\nDe-escalation Rate")
+                with gr.Column(scale=1, elem_classes="stat-box"):
+                    gr.Markdown("### <2s\nResponse Time")
+                with gr.Column(scale=1, elem_classes="stat-box"):
+                    gr.Markdown("### 24/7\nAlways On")
+        
+        with gr.Column(scale=1):
+            gr.HTML("""
+            <div style="padding: 1rem;">
+            <h3 style="color: #000000; margin-bottom: 0.75rem;">See It In Action</h3>
+            <p><a href="https://huggingface.co/spaces/chelleboyer/reachy_mini_retail_assistant" target="_blank" rel="noopener noreferrer" style="color: #0066cc; text-decoration: underline; font-weight: 600; font-size: 1.05rem;">Interactive Demo</a></p>
+            <p style="color: #34495e; margin-top: 0.5rem; font-size: 0.95rem;">Experience the full Karen Whisperer concept with interactive storytelling.<a href="https://thekarenwhisperer.lovable.app/" target="_blank" rel="noopener noreferrer" style="color: #0066cc; text-decoration: underline; font-weight: 600; font-size: 1.05rem;">The Karen Whisperer</a>.</p>
+            </div>
+            """)
+    
+    # What Reachy Can Do
+    gr.Markdown("## What Reachy Mini Can Do")
+    gr.Markdown("Customer service superpowers, minus the cape. Here's how Reachy keeps his cool while keeping customers happy.")
+    
+    with gr.Row():
+        with gr.Column(scale=1):
+            with gr.Group(elem_classes="feature-card"):
+                gr.Markdown("### Smart Q&A")
+                gr.Markdown("Answers common questions about returns, prices, store hours, and policies instantly - no human needed.")
+        
+        with gr.Column(scale=1):
+            with gr.Group(elem_classes="feature-card"):
+                gr.Markdown("### Aisle Navigation")
+                gr.Markdown("Guides customers to the right product or aisle in seconds, reducing wait times and frustration.")
+    
+    with gr.Row():
+        with gr.Column(scale=1):
+            with gr.Group(elem_classes="feature-card"):
+                gr.Markdown("### Issue Detection")
+                gr.Markdown("Spots out-of-stock items and inventory issues, flagging them instantly for your team.")
+        
+        with gr.Column(scale=1):
+            with gr.Group(elem_classes="feature-card"):
+                gr.Markdown("### De-escalation Pro")
+                gr.Markdown("Calms tense situations with friendly, professional prompts designed to diffuse conflict.")
+    
+    with gr.Row():
+        with gr.Column(scale=1):
+            with gr.Group(elem_classes="feature-card"):
+                gr.Markdown("### Smooth Escalation")
+                gr.Markdown("When it's actually time for a human, hands off gracefully - politely and drama-free.")
+        
+        with gr.Column(scale=1):
+            with gr.Group(elem_classes="feature-card"):
+                gr.Markdown("### Lightning Fast")
+                gr.Markdown("Sub-2-second response times keep customers engaged and conversations flowing.")
+    
+    # How It Works
+    gr.Markdown("## How It Works")
+    gr.Markdown("From \"Can I speak to your manager?\" to \"Thank you so much!\" - in three simple steps.")
+    
+    with gr.Column(elem_classes="step-card"):
+        gr.Markdown("### 01 - Customer Approaches")
+        gr.Markdown("A customer asks a question, makes a request, or... starts getting spicy. Reachy Mini is ready.")
+        gr.Code("""// Incoming customer query
+const mood = detectMood(customer);
+// mood: "slightly_annoyed" -> "chill_mode_activated" """, language="typescript")
+    
+    with gr.Column(elem_classes="step-card"):
+        gr.Markdown("### 02 - Instant Analysis")
+        gr.Markdown("Reachy processes the request in milliseconds, understanding intent, emotion, and urgency.")
+        gr.Code("""// AI-powered understanding
+const response = await reachy.analyze({
+  query: customer.message,
+  context: storeData,
+  deEscalationMode: true
+});""", language="typescript")
+    
+    with gr.Column(elem_classes="step-card"):
+        gr.Markdown("### 03 - Perfect Response")
+        gr.Markdown("Delivers a friendly, helpful answer - or gracefully escalates when a human touch is truly needed.")
+        gr.Code("""// Smooth handling
+if (response.needsHuman) {
+  return escalateGracefully(manager);
+}
+return sendResponse(response.message); // ✨""", language="typescript")
+    
+    # Technical Details
+    with gr.Accordion("Technical Architecture", open=False):
+        gr.Markdown("""
+        ### Tech Stack
+        
+        - **Voice AI**: OpenAI Realtime API with function calling
+        - **Robot Platform**: Reachy Mini by Pollen Robotics
+        - **Pattern Detection**: Custom signal tracking & aggregation
+        - **Escalation**: Slack webhook integration
+        - **UI**: Gradio interface with live transcripts
+        
+        ### Custom Tools
+        
+        **Signal Tracker** - Records customer interactions with structured metadata (intent, sentiment, resolution status)
+        
+        **Aggregator** - Analyzes patterns across interactions to identify trends and recurring issues
+        
+        **Escalator** - Triggers Slack notifications when thresholds are exceeded or critical patterns emerge
+        
+        ### Try It Locally
+        
+        ```bash
+        git clone https://github.com/chelleboyer/reachy_mini_karen_whisperer
+        cd reachy_mini_karen_whisperer
+        export OPENAI_API_KEY=your_key
+        export SLACK_WEBHOOK_URL=your_webhook
+        python -m reachy_mini_conversation_app --gradio --profile retail_assistant
+        ```
+        """)
+    
+    # Footer
+    gr.Markdown("""
+    ---
+    
+    ### Reachy Mini
+    
+    **Customer service with built-in chill mode.**
+    
+    [GitHub](https://github.com/chelleboyer/reachy_mini_karen_whisperer) | 
+    [Hugging Face](https://huggingface.co/spaces/chelleboyer/reachy_mini_karen_whisperer) | 
+    Built for [Reachy Mini AI Competition](https://www.pollen-robotics.com/)
+    
+    Made with love for retail heroes.
     """)
 
-    with gr.Row(elem_classes="hero"):
-        with gr.Column():
-            gr.HTML("""
-            <div class="headline">
-                <h1>Meet <span class="accent">Reachy Mini</span></h1>
-                <h2>Retail Assistant</h2>
-                <p>Your tiny, charming Retail Assistant—aka the Karen Whisperer.</p>
-                <p>Small robot. Big patience. De-escalation with built-in chill mode—he handles the "Can I speak to your manager?" so you don't have to.</p>
-                <div class="hero-actions">
-                    <a class="btn primary" href="https://huggingface.co/spaces/chelleboyer/reachy_mini_karen_whisperer" target="_blank" rel="noopener">Try Reachy Mini</a>
-                    <a class="btn ghost" href="https://huggingface.co/spaces/chelleboyer/reachy_mini_karen_whisperer" target="_blank" rel="noopener">Vote on Hugging Face</a>
-                </div>
-            </div>
-            """)
-
-            gr.HTML("""
-            <div class="stats">
-                <div class="stat-card"><div class="value">99%</div><div class="label">De-escalation Rate</div></div>
-                <div class="stat-card"><div class="value">&lt;2s</div><div class="label">Response Time</div></div>
-                <div class="stat-card"><div class="value">24/7</div><div class="label">Always On</div></div>
-            </div>
-            """)
-
-        with gr.Column():
-            gr.HTML("""
-            <div class="device-frame">
-                <div class="device-inner">
-                    <img src="https://raw.githubusercontent.com/chelleboyer/reachy_mini_karen_whisperer/main/images/1-reachy-mini-retail-assistant.PNG" alt="Reachy Mini assistant">
-                </div>
-                <div class="slider-dots">
-                    <span></span><span class="active"></span><span></span><span></span><span></span><span></span><span></span>
-                </div>
-            </div>
-            """)
-
 if __name__ == "__main__":
-    demo.launch()
+    demo.launch(theme=gr.themes.Soft(), css=custom_css)
