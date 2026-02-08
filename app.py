@@ -8,10 +8,10 @@ import gradio as gr
 custom_css = """
 .gradio-container {
     background-image: 
-        linear-gradient(rgba(200, 200, 220, 0.15) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200, 200, 220, 0.15) 1px, transparent 1px) !important;
+        linear-gradient(rgba(150, 150, 180, 0.25) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(150, 150, 180, 0.25) 1px, transparent 1px) !important;
     background-size: 40px 40px !important;
-    background-color: #fafafa !important;
+    background-color: #f5f5f5 !important;
 }
 .app {
     background: transparent !important;
@@ -99,9 +99,9 @@ with gr.Blocks(title="The Karen Whisperer") as demo:
             gr.Markdown("""
             ### See It In Action
             
-            [🎨 Interactive Demo & Marketing Site](https://thekarenwhisperer.lovable.app/)
+            [Interactive Demo & Marketing Site](https://huggingface.co/spaces/chelleboyer/reachy_mini_retail_assistant)
             
-            Experience the full Karen Whisperer concept with interactive storytelling and visual demonstrations.
+            Experience the full Karen Whisperer concept with interactive storytelling (https://thekarenwhisperer.lovable.app/).
             """)
     
     # What Reachy Can Do
