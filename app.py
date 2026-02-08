@@ -15,29 +15,23 @@ custom_css = """
     --accent: #0bb4c6;
 }
 
-.gradio-container {
+body {
     font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background: var(--bg);
     color: var(--text);
 }
 
-.page {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    background-color: var(--bg);
+.gradio-container {
+    font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    background-color: var(--bg) !important;
     background-image:
         linear-gradient(var(--grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-    background-size: 60px 60px;
-    position: relative;
-}
-
-.content {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 48px 32px 56px;
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px) !important;
+    background-size: 60px 60px !important;
+    color: var(--text) !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 48px 32px !important;
 }
 
 .badge-row {
@@ -210,48 +204,46 @@ custom_css = """
 
 
 with gr.Blocks(title="The Karen Whisperer", css=custom_css, theme=gr.themes.Soft()) as demo:
-    with gr.Column(elem_classes="page"):
-        with gr.Column(elem_classes="content"):
+    gr.HTML("""
+    <div class="badge-row">
+        <span class="hf-badge">Powered by Hugging Face</span>
+    </div>
+    """)
+
+    with gr.Row(elem_classes="hero"):
+        with gr.Column():
             gr.HTML("""
-            <div class="badge-row">
-                <span class="hf-badge">Powered by Hugging Face</span>
+            <div class="headline">
+                <h1>Meet <span class="accent">Reachy Mini</span></h1>
+                <h2>Retail Assistant</h2>
+                <p>Your tiny, charming Retail Assistant—aka the Karen Whisperer.</p>
+                <p>Small robot. Big patience. De-escalation with built-in chill mode—he handles the "Can I speak to your manager?" so you don't have to.</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="https://huggingface.co/spaces/chelleboyer/reachy_mini_karen_whisperer" target="_blank" rel="noopener">Try Reachy Mini</a>
+                    <a class="btn ghost" href="https://huggingface.co/spaces/chelleboyer/reachy_mini_karen_whisperer" target="_blank" rel="noopener">Vote on Hugging Face</a>
+                </div>
             </div>
             """)
 
-            with gr.Row(elem_classes="hero"):
-                with gr.Column():
-                    gr.HTML("""
-                    <div class="headline">
-                        <h1>Meet <span class="accent">Reachy Mini</span></h1>
-                        <h2>Retail Assistant</h2>
-                        <p>Your tiny, charming Retail Assistant—aka the Karen Whisperer.</p>
-                        <p>Small robot. Big patience. De-escalation with built-in chill mode—he handles the "Can I speak to your manager?" so you don't have to.</p>
-                        <div class="hero-actions">
-                            <a class="btn primary" href="https://huggingface.co/spaces/chelleboyer/reachy_mini_karen_whisperer" target="_blank" rel="noopener">Try Reachy Mini</a>
-                            <a class="btn ghost" href="https://huggingface.co/spaces/chelleboyer/reachy_mini_karen_whisperer" target="_blank" rel="noopener">Vote on Hugging Face</a>
-                        </div>
-                    </div>
-                    """)
+            gr.HTML("""
+            <div class="stats">
+                <div class="stat-card"><div class="value">99%</div><div class="label">De-escalation Rate</div></div>
+                <div class="stat-card"><div class="value">&lt;2s</div><div class="label">Response Time</div></div>
+                <div class="stat-card"><div class="value">24/7</div><div class="label">Always On</div></div>
+            </div>
+            """)
 
-                    gr.HTML("""
-                    <div class="stats">
-                        <div class="stat-card"><div class="value">99%</div><div class="label">De-escalation Rate</div></div>
-                        <div class="stat-card"><div class="value">&lt;2s</div><div class="label">Response Time</div></div>
-                        <div class="stat-card"><div class="value">24/7</div><div class="label">Always On</div></div>
-                    </div>
-                    """)
-
-                with gr.Column():
-                    gr.HTML("""
-                    <div class="device-frame">
-                        <div class="device-inner">
-                            <img src="https://raw.githubusercontent.com/chelleboyer/reachy_mini_karen_whisperer/main/images/1-reachy-mini-retail-assistant.PNG" alt="Reachy Mini assistant">
-                        </div>
-                        <div class="slider-dots">
-                            <span></span><span class="active"></span><span></span><span></span><span></span><span></span><span></span>
-                        </div>
-                    </div>
-                    """)
+        with gr.Column():
+            gr.HTML("""
+            <div class="device-frame">
+                <div class="device-inner">
+                    <img src="https://raw.githubusercontent.com/chelleboyer/reachy_mini_karen_whisperer/main/images/1-reachy-mini-retail-assistant.PNG" alt="Reachy Mini assistant">
+                </div>
+                <div class="slider-dots">
+                    <span></span><span class="active"></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+            """)
 
 if __name__ == "__main__":
     demo.launch()
