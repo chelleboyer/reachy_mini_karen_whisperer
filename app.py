@@ -6,13 +6,14 @@ import gradio as gr
 
 # Custom CSS matching the marketing site
 custom_css = """
-body {
-    background-image: 
-        linear-gradient(rgba(200, 200, 220, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200, 200, 220, 0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
-}
 .gradio-container {
+    background-image: 
+        linear-gradient(rgba(200, 200, 220, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200, 200, 220, 0.15) 1px, transparent 1px) !important;
+    background-size: 40px 40px !important;
+    background-color: #fafafa !important;
+}
+.app {
     background: transparent !important;
 }
 .hero-section {
