@@ -9,6 +9,23 @@ custom_css = """
 .gradio-container {
     background-color: #f8f9fa;
 }
+/* Force all text to be black/dark - override Gradio defaults */
+.gradio-container * {
+    color: #000000 !important;
+}
+.gradio-container h1, .gradio-container h2, .gradio-container h3, 
+.gradio-container h4, .gradio-container h5, .gradio-container h6 {
+    color: #000000 !important;
+}
+.gradio-container p, .gradio-container span, .gradio-container div {
+    color: #000000 !important;
+}
+.gradio-container .markdown {
+    color: #000000 !important;
+}
+.gradio-container a {
+    color: #0066cc !important;
+}
 .hero-section {
     padding: 2rem 1.5rem;
     margin-bottom: 2rem;
@@ -21,16 +38,16 @@ custom_css = """
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
-    color: #000000;
+    color: #000000 !important;
 }
 .hero-subtitle {
     font-size: 1.3rem;
     margin-bottom: 1rem;
-    color: #2c3e50;
+    color: #000000 !important;
 }
 .hero-description {
     font-size: 1rem;
-    color: #34495e;
+    color: #000000 !important;
     line-height: 1.6;
     margin-bottom: 1.5rem;
 }
@@ -89,8 +106,8 @@ with gr.Blocks(title="The Karen Whisperer") as demo:
             gr.HTML("""
             <div style="padding: 1rem;">
             <h3 style="color: #000000; margin-bottom: 0.75rem;">See It In Action</h3>
-            <p><a href="https://thekarenwhisperer.lovable.app/" target="_blank" rel="noopener noreferrer" style="color: #0066cc; text-decoration: underline; font-weight: 600; font-size: 1.05rem;">Interactive Demo</a></p>
-            <p style="color: #34495e; margin-top: 0.5rem; font-size: 0.95rem;">Experience the full Karen Whisperer concept with interactive <a href="https://thekarenwhisperer.lovable.app/" target="_blank" rel="noopener noreferrer" style="color: #0066cc; text-decoration: underline; font-weight: 600; font-size: 1.05rem;">storytelling</a>.</p>
+            <p><a href="https://huggingface.co/spaces/chelleboyer/reachy_mini_retail_assistant" target="_blank" rel="noopener noreferrer" style="color: #0066cc; text-decoration: underline; font-weight: 600; font-size: 1.05rem;">Interactive Demo</a></p>
+            <p style="color: #34495e; margin-top: 0.5rem; font-size: 0.95rem;">Experience the full Karen Whisperer concept with interactive storytelling.<a href="https://thekarenwhisperer.lovable.app/" target="_blank" rel="noopener noreferrer" style="color: #0066cc; text-decoration: underline; font-weight: 600; font-size: 1.05rem;">The Karen Whisperer</a>.</p>
             </div>
             """)
     
