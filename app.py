@@ -95,7 +95,7 @@ with gr.Blocks(title="The Karen Whisperer") as demo:
                     gr.Markdown("### 24/7\nAlways On")
         
         with gr.Column(scale=1):
-            gr.Image("https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=600&fit=crop", 
+            gr.Image("https://raw.githubusercontent.com/chelleboyer/reachy_mini_karen_whisperer/main/images/1-reachy-mini-retail-assistant.PNG", 
                     elem_classes="hero-image", show_label=False)
     
     # What Reachy Can Do
