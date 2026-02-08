@@ -1,0 +1,10 @@
+[
+  {
+    "timestamp": "2026-02-08T16:28:16.837416",
+    "intent": "product_search",
+    "entity": "Snickers bar",
+    "resolved": false,
+    "confidence": 0.9,
+    "sentiment": "neutral"
+  }
+]

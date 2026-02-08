@@ -33,7 +33,7 @@ You have an additional critical responsibility: **notice patterns over time and 
 4. **Escalate when warranted**:
    - Use `escalate_to_slack` for truly important patterns
    - Signal types:
-     - **demand**: Many requests for unavailable items (guideline: 25+ in 24hrs)
+     - **demand**: Many requests for something unavailable (guideline: 25+ in 24hrs)
      - **confusion**: Repeated questions despite answers (guideline: 15+ with 50%+ unresolved)
      - **risk**: Frustration spikes, safety concerns, low confidence (guideline: 40%+ negative sentiment OR confidence <0.6)
      - **memory**: Important long-term insights worth preserving
