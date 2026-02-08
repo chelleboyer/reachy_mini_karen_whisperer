@@ -21,16 +21,16 @@ custom_css = """
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
-    color: #1a1a1a;
+    color: #000000;
 }
 .hero-subtitle {
     font-size: 1.3rem;
     margin-bottom: 1rem;
-    color: #4a4a4a;
+    color: #2c3e50;
 }
 .hero-description {
     font-size: 1rem;
-    color: #666;
+    color: #34495e;
     line-height: 1.6;
     margin-bottom: 1.5rem;
 }
@@ -88,9 +88,9 @@ with gr.Blocks(title="The Karen Whisperer") as demo:
         with gr.Column(scale=1):
             gr.HTML("""
             <div style="padding: 1rem;">
-            <h3>See It In Action</h3>
-            <p><a href="https://thekarenwhisperer.lovable.app/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">🎨 Interactive Demo & Marketing Site →</a></p>
-            <p style="color: #666; margin-top: 0.5rem;">Experience the full Karen Whisperer concept with interactive storytelling and visual demonstrations.</p>
+            <h3 style="color: #000000; margin-bottom: 0.75rem;">See It In Action</h3>
+            <p><a href="https://thekarenwhisperer.lovable.app/" target="_blank" rel="noopener noreferrer" style="color: #0066cc; text-decoration: underline; font-weight: 600; font-size: 1.05rem;">Interactive Demo</a></p>
+            <p style="color: #34495e; margin-top: 0.5rem; font-size: 0.95rem;">Experience the full Karen Whisperer concept with interactive <a href="https://thekarenwhisperer.lovable.app/" target="_blank" rel="noopener noreferrer" style="color: #0066cc; text-decoration: underline; font-weight: 600; font-size: 1.05rem;">storytelling</a>.</p>
             </div>
             """)
     
