@@ -86,12 +86,12 @@ with gr.Blocks(title="The Karen Whisperer") as demo:
                     gr.Markdown("### 24/7\nAlways On")
         
         with gr.Column(scale=1):
-            gr.Markdown("""
-            ### See It In Action
-            
-            [Interactive Demo & Marketing Site](https://huggingface.co/spaces/chelleboyer/reachy_mini_retail_assistant)
-            
-            Experience the full Karen Whisperer concept with interactive storytelling (https://thekarenwhisperer.lovable.app/).
+            gr.HTML("""
+            <div style="padding: 1rem;">
+            <h3>See It In Action</h3>
+            <p><a href="https://thekarenwhisperer.lovable.app/" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none; font-weight: 500;">🎨 Interactive Demo & Marketing Site →</a></p>
+            <p style="color: #666; margin-top: 0.5rem;">Experience the full Karen Whisperer concept with interactive storytelling and visual demonstrations.</p>
+            </div>
             """)
     
     # What Reachy Can Do
