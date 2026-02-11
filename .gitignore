@@ -60,11 +60,6 @@ cache/
 # User-created personalities (managed by UI)
 src/reachy_mini_conversation_app/profiles/user_personalities/
 
-# Images (hosted on GitHub, referenced via raw URLs)
-images/
-docs/assets/
-src/reachy_mini_karen_whisperer/images/
-
 # Data files
 data/
 *.json
